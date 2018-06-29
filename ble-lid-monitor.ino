@@ -1,4 +1,3 @@
-
 #include "Adafruit_BLE.h"
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "BluefruitConfig.h"
@@ -58,4 +57,3 @@ void loop() {
   }
   delay(32); // Wait for it
 }
-
