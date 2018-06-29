@@ -2,7 +2,7 @@
 #include "Adafruit_BluefruitLE_SPI.h"
 #include "BluefruitConfig.h"
 
-#define FACTORYRESET_ENABLE      1
+#define FACTORYRESET_ENABLE 1
 
 // Create BLE object
 Adafruit_BluefruitLE_SPI ble(BLUEFRUIT_SPI_CS, BLUEFRUIT_SPI_IRQ, BLUEFRUIT_SPI_RST);
@@ -14,7 +14,7 @@ void setup() {
   // Initialise the module
   Serial.print(F("Initialising the Bluefruit LE module: "));
 
-  if ( !ble.begin(VERBOSE_MODE) )
+  if (!ble.begin(VERBOSE_MODE))
   {
     Serial.println(F("Couldn't find Bluefruit, make sure it's in command mode & check wiring?"));
   }
@@ -37,14 +37,14 @@ void setup() {
 }
 
 void loop() {
-  static uint8_t result(0);
+  static uint8_t result(0xFF); // Initialized to 0xFF to mark that it has not yet been set
   uint8_t temp = digitalRead(5);
-  
+
   if(result != temp){
     result = temp;
-    
+
     ble.print("AT+BLEUARTTX=");
-    
+
     if(result){
       ble.println("LID open");
     }
